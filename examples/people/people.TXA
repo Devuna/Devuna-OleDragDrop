@@ -1,0 +1,85 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('gt Buffer:'),USE(?gtBuffer:Prompt)
+! TEXT,USE(gtBuffer)
+[REPORTCONTROLS]
+! TEXT,USE(gtBuffer)
+gtBuffer                 CSTRING(256),THREAD
+!!> GUID('1d5592ee-ad85-45bd-ba0d-2e1d9321e4b4'),PROMPT('gt Buffer:'),HEADER('gt Buffer'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('cs:'),USE(?cs:Prompt)
+! ENTRY(@s20),USE(cs)
+[REPORTCONTROLS]
+! STRING(@s20),USE(cs)
+cs                       CriticalSection
+!!> GUID('713aa99a-140f-4d02-be23-477678466e70'),PROMPT('cs:'),HEADER('cs'),PICTURE(@s20)
+[EMBED]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop)
+!
+!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-OleDragDrop is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+EMBED %GlobalMap
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    MODULE('WinAPI')
+      kcr_CloseClipboard(),BOOL,PROC,PASCAL,NAME('CloseClipboard')
+      kcr_EnumClipboardFormats(UNSIGNED uFormat),UNSIGNED,PASCAL,NAME('EnumClipboardFormats')
+      kcr_GetClipboardFormatName(UNSIGNED uFormat, *CSTRING FormatName, LONG nMaxCount),LONG,PASCAL,RAW,NAME('GetClipboardFormatNameA')
+      kcr_itoa(LONG num, *CSTRING sznum, LONG radix),LONG,PROC,RAW,NAME('_itoa')
+      kcr_OpenClipboard(UNSIGNED hwnd),BOOL,PROC,PASCAL,NAME('OpenClipboard')
+      kcr_RegisterClipboardFormat(*CSTRING FormatName),UNSIGNED,PASCAL,RAW,NAME('RegisterClipboardFormatA')
+      !registry functions
+      kcr_RegOpenKeyEx(UNSIGNED,*CSTRING,ULONG,ULONG,*ULONG),LONG,RAW,PASCAL,NAME('RegOpenKeyExA'),PROC
+      kcr_RegEnumKeyEx(UNSIGNED,ULONG,*CSTRING,*ULONG,ULONG,ULONG,ULONG,ULONG),LONG,RAW,PASCAL,NAME('RegEnumKeyExA'),PROC
+      kcr_RegSetValueEx(UNSIGNED,*CSTRING,ULONG,ULONG,*CSTRING,ULONG),LONG,RAW,PASCAL,NAME('RegSetValueExA'),PROC
+      kcr_RegCloseKey(UNSIGNED),LONG,RAW,PASCAL,NAME('RegCloseKey'),PROC
+      kcr_RegFlushKey(UNSIGNED),LONG,RAW,PASCAL,NAME('RegFlushKey'),PROC
+      kcr_RegQueryValueEx(UNSIGNED,*CSTRING,ULONG,*ULONG,ULONG,*ULONG),LONG,RAW,PASCAL,NAME('RegQueryValueExA'),PROC
+    END
+[END]
+EMBED %AfterGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+HKEY_CURRENT_USER   EQUATE(080000001h)
+KEY_QUERY_VALUE     EQUATE(00001h)
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+    INCLUDE('cwsynchc.inc'),ONCE
+[END]
+[END]
+[END]

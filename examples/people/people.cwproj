@@ -1,0 +1,43 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{23C25945-385F-41A8-A9B5-10642E1AB7F9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>people</RootNamespace>
+    <AssemblyName>people</AssemblyName>
+    <OutputName>people</OutputName>
+    <CWOutputType>Exe</CWOutputType>
+    <DefineConstants>_svDllMode_=&gt;0%3b_svLinkMode_=&gt;1%3b_ComDllMode_=&gt;0%3b_ComLinkMode_=&gt;1%3b_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+  </PropertyGroup>
+  <ItemGroup>
+    <FileDriver Include="TOPSPEED" />
+    <Compile Include="people.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="people001.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="PEOPLE_BC.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="people_BC0.CLW">
+      <Generated>true</Generated>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

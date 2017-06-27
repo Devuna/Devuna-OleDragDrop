@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dictionary Name="people" Version="1" DctxFormat="4">
+	<DictionaryVersion Version="1" Description="Initial version"/>
+	<Table Guid="{17031713-bf4c-4c51-9744-334aeab93159}" Ident="1" Name="people" Prefix="PEO" Driver="TOPSPEED" Create="true" Thread="true">
+		<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedDate="27 JUN 2017" ModifiedTime=" 9:47:31AM" ModifiedVersionNumber="1"/>
+		<Field Guid="{39c99d5a-c70b-4ecc-8cf7-78a9f447550a}" Ident="3" Name="Id" DataType="LONG" Size="4" ScreenPicture="@S10" ScreenPrompt="&amp;Id:" ReportHeading="Id" Justification="RIGHT" Offset="1" ReportControl=" STRING(@S10),USE(PEO:Id),RIGHT(1)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;&amp;Id:&apos;),USE(?PEO:Id:Prompt)"/>
+				<Line Text=" STRING(@S10),USE(PEO:Id),RIGHT(1)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{331f764c-dc99-4cb4-b72d-cadbd99f7357}" Ident="4" Name="FirstName" DataType="STRING" Size="30" ScreenPicture="@S30" ScreenPrompt="&amp;First Name:" ReportHeading="First Name" ReportControl=" STRING(@S30),USE(PEO:FirstName)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;&amp;First Name:&apos;),USE(?PEO:FirstName:Prompt)"/>
+				<Line Text=" ENTRY(@S30),USE(PEO:FirstName)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{c2fe080d-c3bc-45e3-983e-d91dc20bb80a}" Ident="5" Name="LastName" DataType="STRING" Size="30" ScreenPicture="@S30" ScreenPrompt="&amp;Last Name:" ReportHeading="Last Name" ReportControl=" STRING(@S30),USE(PEO:LastName)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;&amp;Last Name:&apos;),USE(?PEO:LastName:Prompt)"/>
+				<Line Text=" ENTRY(@S30),USE(PEO:LastName)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Field Guid="{c4005d5d-fcc6-4e8b-a408-f24d62a3553b}" Ident="6" Name="Gender" DataType="STRING" Size="1" ScreenPicture="@S1" ScreenPrompt="&amp;Gender:" ReportHeading="Gender" ReportControl=" STRING(@S1),USE(PEO:Gender)">
+			<WindowControl>
+				<Line Text=" PROMPT(&apos;&amp;Gender:&apos;),USE(?PEO:Gender:Prompt)"/>
+				<Line Text=" ENTRY(@S1),USE(PEO:Gender)"/>
+			</WindowControl>
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Validity Check="NOCHECKS"/>
+		</Field>
+		<Key Guid="{17d81a6d-6fd9-405d-91da-e878d4a58502}" Ident="1" Order="1" Name="KeyId" KeyType="KEY" Unique="true" AutoNumber="true" Exclude="true">
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Component Guid="{a9d3c9d2-13df-484d-9576-d33f4211ce04}" FieldId="{39c99d5a-c70b-4ecc-8cf7-78a9f447550a}" Order="1" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			</Component>
+		</Key>
+		<Key Guid="{ba5826ca-1be0-44e3-a574-fb9d32aeaa56}" Ident="2" Order="2" Name="KeyLastName" KeyType="KEY">
+			<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			<Component Guid="{8129b460-7685-471b-a8aa-a3f123271188}" FieldId="{c2fe080d-c3bc-45e3-983e-d91dc20bb80a}" Order="1" Ascend="true">
+				<Audit CreateUser="Administrator" CreateDate=" 1 DEC 1997" CreateTime=" 5:47:32PM" CreateVersionNumber="1" ModifiedUser="Administrator" ModifiedVersionNumber="1"/>
+			</Component>
+		</Key>
+	</Table>
+</Dictionary>
+
