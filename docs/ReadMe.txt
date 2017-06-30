@@ -1,3 +1,25 @@
+#! ================================================================================ 
+#!                        Devuna OLE Drag and Drop Templates
+#! ================================================================================ 
+#! Notice : Copyright (C) 2017, Devuna 
+#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
+#! 
+#!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop) 
+#! 
+#!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify 
+#!    it under the terms of the GNU General Public License as published by 
+#!    the Free Software Foundation, either version 3 of the License, or 
+#!    (at your option) any later version. 
+#! 
+#!    Devuna-OleDragDrop is distributed in the hope that it will be useful, 
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+#!    GNU General Public License for more details. 
+#!
+#!    You should have received a copy of the GNU General Public License 
+#!    along with Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>. 
+#! ================================================================================
+
 Using the OleDragDrop template for Clarion 10:
 
 There are two templates in the KCR_OleDragDrop template set.
@@ -118,8 +140,8 @@ images\DragDrop.ico - template icon
 
 
 Here is a list of the files installed in the CSIDL_COMMON_DOCUMENTS\SoftVelocity\Clarion10\Accessory\Devuna
-Documents\Ole Drag and Drop\licence.txt - your licence
-Documents\Ole Drag and Drop\readme.txt - this file
-Examples\Ole Drag and Drop\people.app
-Examples\Ole Drag and Drop\people.dct
-Examples\Ole Drag and Drop\people.tps
+Documents\OleDragDrop\LICENSE - your licence
+Documents\OleDragDrop\readme.txt - this file
+Examples\OleDragDrop\people.app
+Examples\OleDragDrop\people.dct
+Examples\OleDragDrop\people.tps

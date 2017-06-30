@@ -1,0 +1,11 @@
+<AddIn name="Ole Drag and Drop" author="Devuna" url="http://www.devuna.com" description="Ole Drag and Drop Accessory Menu Addin">
+<Manifest><Identity name="OleDragDrop.addin" version="1.0"/><Dependency addin="SharpDevelop" version="2.1"/><Dependency addin="Devuna.Addin"/></Manifest>
+<Path name="/SharpDevelop/Workbench/MainMenu/Help/Accessory/Devuna">
+<MenuItem id="OleDragDropHelp" 
+		  label="Ole Drag and Drop" 
+		  icon = "Icons.16x16.WebSearchIcon" 
+		  insertafter="DevunaSeparator" 
+		  link="http://www.devuna.com/ToolsForClarion/OLEDragDrop/ReadMe.htm">
+</MenuItem>
+</Path>
+</AddIn>

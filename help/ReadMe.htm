@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Devuna [OLE Drag and Drop]</title>
+    <link rel="stylesheet" type="text/css" href="devuna.css" media="screen" title="Stoned (screen)" />
+    <link rel="stylesheet" type="text/css" href="devuna-print.css" media="print" />
+    <meta http-equiv="Content-Language" content="en-us"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <meta name="description" content="...Devuna offers Custom Software solutions, Municipal Property Tax Management software, and Tools for Clarion for Windows developers." />
+    <meta name="keywords" content="contract programming, custom programming, programming, programmer, programmers, outsourcing, out sourcing, computer software, software developer, custom software, contract software, nettools, clarion, clarion for windows, wordtools, tools for clarion, clarion developer tools, templates, clarion templates, topspeed, municipal tax software, property tax software, property tax billing, municipal, municipal tax, property tax, pharmacoeconomic, pharmacoeconomics, pharmacoeconomic software" />
+    <meta name="owner" content="rrogers@devuna.com"/>
+    <meta name="author" content="Randy Rogers"/>
+    <meta name="copyright" content="© Copyright 2009-2017 Devuna Inc."/>
+    <meta name="rating" content="general"/>
+    <meta name="ROBOTS" content="ALL"/>
+</head>
+
+<body style="background-image:url(bg.gif); background-repeat:repeat;">
+
+<form id="form1" runat="server">
+
+<div class="header">
+        &nbsp;<img src="small_logo.jpg" alt="(logo)" /><h1 style="position: relative; top: -50px">DEVUNA</h1>
+</div>
+
+<!--
+<div class="horiz_divider">
+</div>
+-->
+
+<div class="top_nav doNotPrint">
+    Software Solutions...
+</div>
+
+<!--
+<div class="horiz_divider">
+</div>
+-->
+
+<div style="margin: 0; background-color: #ffffc3; border-bottom: 2px solid #676362;">
+
+<!--
+    <div class="vert_divider">
+    </div>
+-->
+
+<div style="background-color: #ffffc3; border-right: 2px solid #676362; font-size:small; margin: 0; overflow:hidden; padding: 5px 10px 5px 10px;">
+
+<p class="content_title">Using the OleDragDrop template for Clarion</p>
+<p>There are two templates in the KCR_OleDragDrop template set:</p>
+<ul>
+    <li><b>KCR_GlobalOleDragDrop</b> is the Devuna Global OLE Drag and Drop Extension template.
+        Add it to the Global Extensions of your application.  It is required by the other
+        template(s) in the set.  It has a check box to allow you to turn off code generation.
+        If you check this option, there will be no Ole Drag and Drop code generated in the
+        entire application.  You can disable it at the procedure level with the next template.<br /><br /></li>
+    <li><b>KCR_OleDragDrop</b> is the Devuna OLE Drag and Drop Extension to add Ole Drag and Drop
+        to your procedure.  You need to have a local CSTRING variable to contain the drag and
+        drop text.  Define it before populating the template.</li>
+</ul>
+
+<div style="margin-left: 40px;">
+    <p>This template has several prompts:</p>
+    <ul>
+        <li style="margin-top: -15px;"><b>Drag and Drop Control</b> - select the control that is to be the source/target for the drag and drop
+            If the control you selected is also an ABC BrowseBox control the the template will automatically
+            generate the code to set the OleData to the BrowseBox contents.</li>
+
+        <li style="margin-top: 5px;"><b>Drag and Drop Data</b> - the local CSTRING variable you created to hold the drag/drop text</li>
+
+        <li style="margin-top: 5px;"><b>Include Drag Support</b> - uncheck to disable generating code to support the drag operation</li>
+
+        <li style="margin-top: 5px;"><b>Include Column Heading</b> - if this is an ABC BrowseBox add the column headers to the OleData.</li>
+
+        <li style="margin-top: 5px;"><b>Field Delimiter</b> - choose either CRLF (Carrige Return Line Feed) or TAB as a field separator.
+            If you are pasting into Excel, use CRLF to put the data into different rows; use TAB to
+            put the data into different columns.</li>
+
+        <li style="margin-top: 5px;"><b>Effects Allowed</b> - these control the effects that are allowed by the drop source.  You must
+            have at least one of these selected.  Keystate modifiers have the following standard OLE
+            effects:
+            <ol>
+                <li>ctrl = copy</li>
+                <li>shift = move</li>
+                <li>ctrl+shift = link</li>
+            </ol><br />
+            It is up to you to respond appropriately in your code to the returned effect after a successful
+            drop.  For copy you don't need to do anytihing; for move, you would need to delete the queue
+            entry (for a listbox) or the selected text (for text or entry controls).  Link is provided
+            for completeness; you'll have to decide how to handle this yourself.</li>
+
+        <li style="margin-top: 5px;"><b>Include Drop Support</b> - uncheck to disable generating code to support the drop operation</li>
+
+        <li style="margin-top: 5px;"><b>OleDrop Event Value</b> - when a successful drop has been completed, the generated code will
+            post an event back to your main window.  You can set the value for that event here.
+            the default is 09000h</li>
+    </ul>
+</div>
+
+<p><span style="color:Red; font-weight:bold">***WARNING***</span><br />
+    If you are using a List control as your Drag and Drop control, make sure it does not have
+    a DRAGID or a DROPID as Clarion list box drag and drop support will cause problems.<br />
+    <span style="color:Red; font-weight:bold">***WARNING***</span></p>
+
+<p class="content_title">Example using the OleDragDrop template for Clarion</p>
+<p>An example application is provided in the
+    CSIDL_COMMON_DOCUMENTS\SoftVelocity\Clarion10\Accessory\Devuna\Examples\Ole Drag and Drop directory.
+    This is the standard People.App with Ole Drag and Drop support added to the people browse.</p>
+
+<p class="content_title">Classes included with OleDragDrop for Clarion</p>
+<p>There are four interface classes included in the package.</p>
+    <ol style="margin-top: -15px">
+        <li>IDropSourceClass</li>
+        <li>IDropTargetClass</li>
+        <li>IDataObjectClass</li>
+        <li>IEnumFORMATETCClass</li>
+    </ol>
+
+<p>These classes are wrappers for the similarly named interfaces.  Please see the interface documentation on MSDN for details of the interface
+    methods.</p>
+    <ol style="margin-top: -15px">
+        <li><a href="http://msdn.microsoft.com/en-us/library/ms690071(v=vs.85).aspx" target="_blank">IDropSource</a> Interface</li>
+        <li><a href="http://msdn.microsoft.com/en-us/library/ms679679(v=VS.85).aspx" target="_blank">IDropTarget</a> Interface</li>
+        <li><a href="http://msdn.microsoft.com/en-us/library/ms688421(v=VS.85).aspx" target="_blank">IDataObject</a> Interface</li>
+        <li><a href="http://msdn.microsoft.com/en-us/library/ms682337(v=VS.85).aspx" target="_blank">IEnumFORMATETC</a> Interface</li>
+    </ol>
+
+<p>Besides the interface methods, each class has several common methods: contruct,
+    destruct, init, kill, getinterfaceobject, getliblocation, and _ShowErrorMessage:</p>
+
+    <ul>
+        <li style="margin-top: -15px;"><b>construct</b> - standard constructor</li>
+        <li style="margin-top: 5px;"><b>destruct</b> - standard destructor</li>
+        <li style="margin-top: 5px;"><b>init</b> - standard initialization for class ... must be called before other methods
+            <ul>
+                <li style="margin-top: 5px;"><span class="content_title">IDropSourceClass.Init</span><br />
+                                            no parameters</li>
+                <li style="margin-top: 5px;"><span class="content_title">IDropTargetClass.Init(</span><i>hwnd</i><span class="content_title">)</span><br />
+                                            <i>hwnd</i> - the handle of the window that is to be the drop target</li>
+                <li style="margin-top: 5px;"><span class="content_title">IDataObjectClass.Init(</span><i>fmtetc, stgmed, count</i><span class="content_title">)</span><br />
+                                            <i>fmtetc</i> - pointer to a tagFORMATETC group array<br />
+                                            <i>stgmed</i> - pointer to a stgmed group array<br />
+                                            <i>count</i> - long number of array elements</li>
+                <li style="margin-top: 5px;"><span class="content_title">IEnumFORMATETCClass.Init(</span><i>fmtetc, count</i><span class="content_title">)</span><br />
+                                            <i>fmtetc</i> - pointer to a tagFORMATETC group array<br />
+                                            <i>count</i> - long number of array elements</li>
+            </ul>
+        </li>
+        <li style="margin-top: 5px;"><b>kill</b> - for clean up on exit</li>
+        <li style="margin-top: 5px;"><b>getInterfaceObject</b> - returns a pointer to the raw interface</li>
+        <li style="margin-top: 5px;"><b>getLibLocation</b> - returns nothing for these classes</li>
+        <li style="margin-top: 5px;"><b>_ShowErrorMessage</b> - used by the class to display internal errors</li>
+    </ul>
+
+<p>There is also an <span class="content_title">OleData class</span> that has just one method <b>GetOleData</b>.
+    This class method is called from a subclassed winproc just prior to initiating the drag operation to allow
+    you to prepare the data for transfer.  Because it is called from a subclassed winproc the GetOleData method
+    runs on a different stack than your main code.  <b>This means that you should only access global and module data
+    from this procedure</b>.</p>
+
+<p>Please refer to the template generated comments and code.</p>
+
+<p class="content_title">Learn More About Ole Drag and Drop</p>
+<p>If you want to know more details about how OLE Drag and Drop works, and also what I used as a guide,
+   please read the <a href="http://www.catch22.net/tuts/dragdrop/1" target="_blank">Drag and Drop Tutorial</a> at catch22.com.</p>
+
+<p class="content_title">Using the OleDragDrop Tool classes with Clarion 5.5</p>
+<p>To use the Classes and Templates with C55, you will need to copy the following
+    Clarion 10 files to your C55/libsrc folder:</p>
+    <ul>
+        <li>svapi.inc</li>
+        <li>svapifnc.inc</li>
+        <li>svcom.inc</li>
+        <li>svcom.clw</li>
+        <li>svcomdef.inc</li>
+        <li>winerr.inc</li>
+    </ul>
+
+<p>Please email your questions, comments, or sugestions to rrogers@devuna.com</p>
+
+<p>Thanks for choosing our Ole Drag and Drop Tools!</p>
+
+<p class="content_title">Files Installed by the OleDragDrop Tools for Clarion</p>
+<p>Here is a list of the files installed in the CSIDL_PROGRAM_FILES\SoftVelocity\Clarion10\accessory folder:</p>
+
+<ul>
+    <li>libsrc\win\cDataObject.clw - Class Implementation</li>
+    <li>libsrc\win\cDataObject.inc - Class Declarations</li>
+    <li>template\win\OleDragDrop.tpl - the templates</li>
+    <li>images\DragDrop.ico - template icon</li>
+    <li>Documents\Devuna\OleDragDrop\LICENSE - your licence</li>
+    <li>Documents\Devuna\OleDragDrop\readme.txt - this file</li>
+</ul>
+
+<p>Here is a list of the files installed in the CSIDL_COMMON_DOCUMENTS\SoftVelocity\Clarion10\Accessory\Devuna</p>
+<ul>
+    <li>Documents\OleDragDrop\LICENSE - your licence</li>
+    <li>Documents\OleDragDrop\readme.txt - this file</li>
+    <li>Examples\OleDragDrop\people.app</li>
+    <li>Examples\OleDragDrop\people.dct</li>
+    <li>Examples\OleDragDrop\people.tps</li>
+</ul>
+
+    </div>
+</div>
+
+<!--
+<div class="horiz_divider">
+</div>
+-->
+
+<div class="footer" style="padding-top: 5px">
+    <sup>©</sup>Copyright 2006-2017 Devuna Inc. - All rights reserved
+</div>
+
+</form>
+
+</body>
+
+</html>
+
