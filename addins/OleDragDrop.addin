@@ -5,7 +5,7 @@
 		  label="Ole Drag and Drop" 
 		  icon = "Icons.16x16.WebSearchIcon" 
 		  insertafter="DevunaSeparator" 
-		  link="http://www.devuna.com/ToolsForClarion/OLEDragDrop/ReadMe.htm">
+		  link="home://accessory/Documents/Devuna/OleDragDrop/ReadMe.htm">
 </MenuItem>
 </Path>
 </AddIn>
