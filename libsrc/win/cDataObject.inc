@@ -1,26 +1,25 @@
 
 !ABCIncludeFile(COM)
 
-! ================================================================================ 
+! ================================================================================
 !                        Devuna OLE Drag and Drop Classes
-! ================================================================================ 
-! Notice : Copyright (C) 2017, Devuna 
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop) 
-! 
-!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-OleDragDrop is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
-!    You should have received a copy of the GNU General Public License 
-!    along with Devuna-Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>. 
+!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop)
+!
+!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-OleDragDrop is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-Devuna-OleDragDrop.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !
 !Author:        Randy Rogers <rrogers@devuna.com>
@@ -136,7 +135,7 @@ fWide                               BOOL        ! wide character flag
 
 FORMATETC                       GROUP,TYPE
 cfFormat                            LONG
-ptd                                 LONG              
+ptd                                 LONG
 dwAspect                            ULONG
 lindex                              LONG
 tymed                               ULONG
@@ -344,8 +343,8 @@ IDataObjectClass                CLASS,IMPLEMENTS(IDataObject),TYPE,MODULE('cData
 m_cRef                            LONG,PRIVATE
 m_nNumFormats                     LONG
 m_nMaxFormats                     LONG
-m_pFormatEtc                      LONG	!LIKE(FORMATETC),DIM(MAX_NUM_FORMAT)
-m_pStgMedium                      LONG	!LIKE(STGMEDIUM),DIM(MAX_NUM_FORMAT)
+m_pFormatEtc                      LONG  !LIKE(FORMATETC),DIM(MAX_NUM_FORMAT)
+m_pStgMedium                      LONG  !LIKE(STGMEDIUM),DIM(MAX_NUM_FORMAT)
 IsInitialized                     BOOL,PROTECTED
 debug                             BOOL
 IDataObjectObj                    &IDataObject,PROTECTED

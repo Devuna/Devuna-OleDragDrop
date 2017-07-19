@@ -1,25 +1,24 @@
-#! ================================================================================ 
-#!                        Devuna OLE Drag and Drop Templates
-#! ================================================================================ 
-#! Notice : Copyright (C) 2017, Devuna 
-#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-#! 
-#!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop) 
-#! 
-#!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify 
-#!    it under the terms of the GNU General Public License as published by 
-#!    the Free Software Foundation, either version 3 of the License, or 
-#!    (at your option) any later version. 
-#! 
-#!    Devuna-OleDragDrop is distributed in the hope that it will be useful, 
-#!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-#!    GNU General Public License for more details. 
-#!
-#!    You should have received a copy of the GNU General Public License 
-#!    along with Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>. 
 #! ================================================================================
-#!                              
+#!                        Devuna OLE Drag and Drop Templates
+#! ================================================================================
+#! Notice : Copyright (C) 2017, Devuna
+#!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+#!
+#!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop)
+#!
+#!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify
+#!    it under the terms of the MIT License as published by
+#!    the Open Source Initiative.
+#!
+#!    Devuna-OleDragDrop is distributed in the hope that it will be useful,
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#!    MIT License for more details.
+#!
+#!    You should have received a copy of the MIT License
+#!    along with Devuna-OleDragDrop.  If not, see <https://opensource.org/licenses/MIT>.
+#! ================================================================================
+#!
 #!Author:        Randy Rogers <rrogers@devuna.com>
 #!
 #!Revisions:
@@ -329,9 +328,9 @@ kcr_SystemParametersInfo(77,4,0,3)  #<!SPI_SETDRAGHEIGHT
 #!
   #CASE(%FieldDelimiter)
   #OF('CRLF')
-    #SET(%Delimiter,'''<<13,10>''')
+    #SET(%Delimiter,'''<<0DH,0AH>''')
   #OF('TAB')
-    #SET(%Delimiter,'''<<9>''')
+    #SET(%Delimiter,'''<<09H>''')
   #ENDCASE
 #!
   #IF(SUB(%CWTemplateVersion,1,2)='v2' OR (VAREXISTS(%AppTemplateFamily) AND %AppTemplateFamily='CLARION'))
@@ -894,7 +893,7 @@ hr           HRESULT(E_FAIL)
     #SET(%EmbedNumber,%EmbedNumber+1)
     #EMBED(%OleDataObjectDAdviseCodeStart,'Ole Drag and Drop:  OleDataObjectDAdvise Code Start'),%ActiveTemplateInstance,TREE('Ole Drag and Drop',%DragDropControl,%ValueConstruct,%EmbedNumber & '. ' & %ValueConstruct & ' (Code Start)')
     hr = PARENT.DAdvise(pformatetc, advf, pAdvSink, pdwConnection)
-    #SET(%EmbedNumber,%EmbedNumber+1)   
+    #SET(%EmbedNumber,%EmbedNumber+1)
     #EMBED(%OleDataObjectDAdviseCodeAfterParentCall,'Ole Drag and Drop:  OleDataObjectDAdvise Code After Parent Call'),%ActiveTemplateInstance,TREE('Ole Drag and Drop',%DragDropControl,%ValueConstruct,%EmbedNumber & '. ' & %ValueConstruct & ' (Code After Parent Call)')
     RETURN hr
     #EMBED(%OleDataObjectDAdviseCodeEnd,'Ole Drag and Drop:  OleDataObjectDAdvise Code End'),%ActiveTemplateInstance,TREE('Ole Drag and Drop',%DragDropControl,%ValueConstruct,%EmbedNumber & '. ' & %ValueConstruct & ' (Code End)')
@@ -1095,7 +1094,7 @@ iUnk            &IUnknown
 #SET(%ValueConstruct,'OleDataSource' & %ActiveTemplateInstance & '.GetOleData')
 %20ValueConstruct PROCEDURE()
 !This class method is called from a subclassed winproc
-!just prior to initiating the drag operation to allow 
+!just prior to initiating the drag operation to allow
 !you to complete preparation of the data for transfer.
 !
 !Default Behaviour:
@@ -1142,7 +1141,7 @@ iUnk            &IUnknown
     UPDATE(%DragDropControl)
     IF %DragDropControl{PROP:SelEnd} > 0
        %OleDataBufferOverride = %ControlUse[%DragDropControl{PROP:SelStart} : %DragDropControl{PROP:SelEnd}]
-    ELSE           
+    ELSE
        %OleDataBufferOverride = %ControlUse
     END
     #SET(%EmbedNumber,%EmbedNumber+1)

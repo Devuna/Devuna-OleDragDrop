@@ -1,23 +1,22 @@
-#! ================================================================================ 
+#! ================================================================================
 #!                        Devuna OLE Drag and Drop Templates
-#! ================================================================================ 
-#! Notice : Copyright (C) 2017, Devuna 
-#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-#! 
-#!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop) 
-#! 
-#!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify 
-#!    it under the terms of the GNU General Public License as published by 
-#!    the Free Software Foundation, either version 3 of the License, or 
-#!    (at your option) any later version. 
-#! 
-#!    Devuna-OleDragDrop is distributed in the hope that it will be useful, 
-#!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-#!    GNU General Public License for more details. 
+#! ================================================================================
+#! Notice : Copyright (C) 2017, Devuna
+#!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #!
-#!    You should have received a copy of the GNU General Public License 
-#!    along with Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>. 
+#!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop)
+#!
+#!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify
+#!    it under the terms of the MIT License as published by
+#!    the Open Source Initiative.
+#!
+#!    Devuna-OleDragDrop is distributed in the hope that it will be useful,
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#!    MIT License for more details.
+#!
+#!    You should have received a copy of the MIT License
+#!    along with Devuna-OleDragDrop.  If not, see <https://opensource.org/licenses/MIT>.
 #! ================================================================================
 
 Using the OleDragDrop template for Clarion 10:
@@ -32,7 +31,7 @@ entire application.  You can disable it at the procedure level with the next tem
 
 KCR_OleDragDrop is the Devuna OLE Drag and Drop Extension to add Ole Drag and Drop
 to your procedure.  You need to have a local CSTRING variable to contain the drag and
-drop text.  Define it before populating the template.  
+drop text.  Define it before populating the template.
 
 
 This template has several prompts:
@@ -73,7 +72,7 @@ If you are using a List control as your Drag and Drop control, make sure it does
 a DRAGID or a DROPID as Clarion list box drag and drop support will cause problems.
 ***WARNING***
 
-An example application is provided in the 
+An example application is provided in the
 CSIDL_COMMON_DOCUMENTS\SoftVelocity\Clarion10\Accessory\Devuna\Examples\Ole Drag and Drop directory.
 This is the standard People.App with Ole Drag and Drop support added to the people browse.
 
@@ -97,7 +96,7 @@ init - standard initialization for class ... must be called before other methods
 
         IEnumFORMATETCClass.Init(fmtetc, count) -       fmtetc pointer to a tagFORMATETC group array
                                                         count long number of array elements
-                                                        
+
 kill - for clean up on exit
 
 getinterfaceobject - returns a pointer to the raw interface

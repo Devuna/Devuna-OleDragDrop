@@ -1,25 +1,24 @@
    MEMBER
 
-! ================================================================================ 
+! ================================================================================
 !                        Devuna OLE Drag and Drop Classes
-! ================================================================================ 
-! Notice : Copyright (C) 2017, Devuna 
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html) 
-! 
-!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop) 
-! 
-!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify 
-!    it under the terms of the GNU General Public License as published by 
-!    the Free Software Foundation, either version 3 of the License, or 
-!    (at your option) any later version. 
-! 
-!    Devuna-OleDragDrop is distributed in the hope that it will be useful, 
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of 
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-!    GNU General Public License for more details. 
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
-!    You should have received a copy of the GNU General Public License 
-!    along with Devuna-Devuna-OleDragDrop.  If not, see <http://www.gnu.org/licenses/>. 
+!    This file is part of Devuna-OleDragDrop (https://github.com/Devuna/Devuna-OleDragDrop)
+!
+!    Devuna-OleDragDrop is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-OleDragDrop is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-Devuna-OleDragDrop.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !
 !Author:        Randy Rogers <rrogers@devuna.com>
@@ -54,7 +53,7 @@
     CreateEnumFormatEtc(LONG nNumFormats, LONG paFormatEtc, LONG ppenumFormatEtc),HRESULT,PROC
     Dec2Hex(ULONG),STRING
     DeepCopyFormatEtc(LONG dest, LONG source)
-    DupMem(HGLOBAL hMem),HGLOBAL 
+    DupMem(HGLOBAL hMem),HGLOBAL
   END
 
 CreateEnumFormatEtc PROCEDURE(LONG nNumFormats, LONG paFormatEtc, LONG ppIEnumFORMATETC)
@@ -110,7 +109,7 @@ sourceFormatEtc     &FORMATETC
     RETURN
 
 
-DupMem  PROCEDURE(HGLOBAL hMem) !,HGLOBAL                                           
+DupMem  PROCEDURE(HGLOBAL hMem) !,HGLOBAL
 source      LONG
 dest        LONG
 dwBytes     DWORD
@@ -118,7 +117,7 @@ dwBytes     DWORD
   CODE
     !lock the source memory object
     source = GlobalLock(hMem)
-    
+
     !create a fixed "global" block - i.e. just
     !a regular lump of our process heap
     dwBytes = kcr_GlobalSize(hMem)
@@ -224,7 +223,7 @@ AllMedia    ULONG(0FFFFFFFFh)
           (_FormatEtc.dwaspect = pFormatEtc.dwaspect)
           BREAK
        END
-    END    
+    END
 
     RETURN CHOOSE(I <= SELF.m_nNumFormats,I,-1)
 
@@ -427,7 +426,7 @@ lpSource    LONG
                 lpDest = SELF.m_pFormatEtc + ((i-1) * SIZE(FORMATETC))
                 lpSource = ADDRESS(pformatetc)
                 kcr_memcpy(lpDest,lpSource, SIZE(FORMATETC))
-                
+
                 lpDest = SELF.m_pStgMedium + ((i-1) * SIZE(STGMEDIUM))
                 lpSource = ADDRESS(pMedium)
                 kcr_memcpy(lpDest,lpSource, SIZE(STGMEDIUM))
@@ -441,11 +440,11 @@ lpSource    LONG
                 lpDest = SELF.m_pFormatEtc + ((i-1) * SIZE(FORMATETC))
                 lpSource = ADDRESS(pformatetc)
                 kcr_memcpy(lpDest,lpSource, SIZE(FORMATETC))
-                
+
                 lpDest = SELF.m_pStgMedium + ((i-1) * SIZE(STGMEDIUM))
                 lpSource = ADDRESS(pMedium)
                 kcr_memcpy(lpDest,lpSource, SIZE(STGMEDIUM))
-                  
+
                 SELF.m_nNumFormats += 1
                 hr = S_OK
              ELSE
